@@ -1,0 +1,6 @@
+[submodule "greenhouse-app"]
+	path = greenhouse-app
+	url = https://github.com/miagegreenhouse/greenhouse-app
+[submodule "greenhouse-server"]
+	path = greenhouse-server
+	url = https://github.com/miagegreenhouse/greenhouse-server
