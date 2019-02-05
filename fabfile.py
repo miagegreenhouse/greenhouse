@@ -26,7 +26,7 @@ def _get_latest_source(connection, source_folder=SOURCE_FOLDER):
 
 def _install_node_server(connection, name="dev", source_folder=SOURCE_FOLDER):
     print("Installing node server")
-    connection.run('cd %s && make install %s' % (SOURCE_FOLDER + '/greenhouse-server', name), pty="True")
+    connection.run('./tools/install.sh %s' % (name), pty="True")
 
 def _run_back_end(connection):
     connection.run('supervisorctl reread', pty="True")

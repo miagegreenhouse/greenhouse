@@ -8,14 +8,7 @@ then
 else
     if [ $1 == "local" ] || [ $1 == "dev" ] || [ $1 == "prod" ]
     then
-        cat ./server/environments/env_$1 > .env &&
-        
-        apt install curl &&
-        curl -sL https://deb.nodesource.com/setup_10.x | bash - &&
-        apt install nodejs && 
-
-        npm install -g nodemon && npm i &&
-        cp ./supervisor/greenhouse_server.conf /etc/supervisor/conf.d/greenhouse_server.conf
+      ./greenhouse-server/install.sh
     else
         echo "Bad argument supplied
         Usage : ./install.sh <env>
