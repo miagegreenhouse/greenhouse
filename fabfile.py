@@ -31,8 +31,8 @@ def _install_node_server(connection, name="dev", source_folder=SOURCE_FOLDER):
     connection.run('cd %s && tools/install.sh %s' % (source_folder, name), pty="True")
 
 def _run_back_end(connection):
-    if connection.run('test -d %s' % (source_folder + '/var'), warn=True).failed:
-      connection.run('mkdir %s' % (source_folder + '/var'))
+    if connection.run('test -d %s' % (SOURCE_FOLDER + '/var'), warn=True).failed:
+      connection.run('mkdir %s' % (SOURCE_FOLDER + '/var'))
     connection.run('supervisorctl reread', pty="True")
     connection.run('supervisorctl update', pty="True")
     _run_node_server(connection)
