@@ -10,7 +10,8 @@ else
     then
       DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
       print $DIR
-      $DIR/../greenhouse-server/install.sh $1
+      $DIR/../greenhouse-server/install.sh $1 &&
+      $DIR/../greenhouse-app/install.sh $1
     else
         echo "Bad argument supplied
         Usage : ./install.sh <env>
