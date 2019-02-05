@@ -8,7 +8,9 @@ then
 else
     if [ $1 == "local" ] || [ $1 == "dev" ] || [ $1 == "prod" ]
     then
-      ../greenhouse-server/install.sh
+      DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+      print $DIR
+      $DIR/../greenhouse-server/install.sh $1
     else
         echo "Bad argument supplied
         Usage : ./install.sh <env>
