@@ -8,7 +8,7 @@ then
 else
     if [ $1 == "local" ] || [ $1 == "dev" ] || [ $1 == "prod" ]
     then
-      ./greenhouse-server/install.sh
+      ../greenhouse-server/install.sh
     else
         echo "Bad argument supplied
         Usage : ./install.sh <env>
