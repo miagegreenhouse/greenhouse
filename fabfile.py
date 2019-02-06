@@ -23,8 +23,8 @@ def _get_latest_source(connection, source_folder=SOURCE_FOLDER):
     else:
         print("Pulling last updates")
         connection.run('cd %s && git pull' % (source_folder,))
-        connection.run('cd %s && git pull origin develop' % (source_folder + '/greenhouse-server'))
-        connection.run('cd %s && git pull origin dev' % (source_folder + '/greenhouse-app'))
+        connection.run('cd %s && git reset --hard && git pull origin develop' % (source_folder + '/greenhouse-server'))
+        connection.run('cd %s && git reset --hard && git pull origin dev' % (source_folder + '/greenhouse-app'))
 
 def _install_node_server(connection, name="dev", source_folder=SOURCE_FOLDER):
   print("Installing node server and ionic app")
