@@ -32,7 +32,7 @@ def _install_node_server(connection, name="dev", source_folder=SOURCE_FOLDER):
 
 def _build_app(connection, source_folder=SOURCE_FOLDER):
     print("Building app")
-    connection.run('cd %s && ionic build --prod' % (source_folder), pty="True")
+    connection.run('cd %s && ionic build --prod' % (source_folder + '/greenhouse-app'), pty="True")
 
 def _run_back_end(connection):
     if connection.run('test -d %s' % (SOURCE_FOLDER + '/var'), warn=True).failed:
