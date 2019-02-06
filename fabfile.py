@@ -27,8 +27,12 @@ def _get_latest_source(connection, source_folder=SOURCE_FOLDER):
         connection.run('cd %s && git pull origin dev' % (source_folder + '/greenhouse-app'))
 
 def _install_node_server(connection, name="dev", source_folder=SOURCE_FOLDER):
-  print("Installing node server and ionic ap")
+  print("Installing node server and ionic app")
   connection.run('cd %s && tools/install.sh %s' % (source_folder, name), pty="True")
+
+def _build_app(connection, source_folder=SOURCE_FOLDER):
+    print("Building app")
+    connection.run('cd %s && ionic build --prod' % (source_folder), pty="True")
 
 def _run_back_end(connection):
     if connection.run('test -d %s' % (SOURCE_FOLDER + '/var'), warn=True).failed:
@@ -62,6 +66,7 @@ def deploy(ctx, name="dev"):
     print("Connection to %s established" % (host))
     _get_latest_source(c, SOURCE_FOLDER)
     _install_node_server(c, name, SOURCE_FOLDER)
+    _build_app(c)
     _run_back_end(c)
 
 @task
